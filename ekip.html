@@ -3,80 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EKİP | VIP ÜS</title>
+    <title>EKİP | VIP BASE</title>
     <style>
-        :root { --neon: #00ff00; --bg: #0a0a0a; --card: #1a1a1a; }
-        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; }
-        .header { text-align: center; padding: 20px; border-bottom: 2px solid var(--neon); margin-bottom: 20px; }
-        h1 { color: var(--neon); text-shadow: 0 0 15px rgba(0,255,0,0.4); margin: 0; font-size: 1.8rem; }
+        :root { --neon: #00ff00; --bg: #050505; --card: #111; --border: #222; }
+        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         
-        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 15px; max-width: 1400px; margin: 0 auto; }
-        
-        .box { background: var(--card); border: 1px solid #333; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; }
-        .box h2 { color: var(--neon); border-bottom: 1px solid #444; padding-bottom: 10px; margin-top: 0; font-size: 1.2rem; }
+        /* HEADER */
+        .top-bar { padding: 15px 30px; background: #000; border-bottom: 2px solid var(--neon); display: flex; justify-content: space-between; align-items: center; }
+        .top-bar h1 { color: var(--neon); margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+        .status { color: #555; font-size: 0.8rem; }
 
-        /* OYUN ALANI */
-        .game-container { flex-grow: 1; height: 600px; border: 2px solid #222; border-radius: 10px; overflow: hidden; background: #000; }
+        /* ANA PANEL */
+        .main-wrapper { display: flex; flex: 1; overflow: hidden; }
+
+        /* SOL PANEL: ÖZEL OYUNLAR & LİNKLER */
+        .sidebar { width: 300px; background: var(--card); border-right: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; }
+        .sidebar h2 { color: var(--neon); font-size: 1rem; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .game-list { list-style: none; padding: 0; flex: 1; overflow-y: auto; }
+        .game-item { background: #1a1a1a; margin-bottom: 10px; padding: 12px; border-radius: 8px; border: 1px solid #222; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .game-item:hover { border-color: var(--neon); background: #222; }
+        .game-item span { font-size: 0.9rem; font-weight: bold; }
+
+        /* ORTA PANEL: OYUN EKRANI */
+        .game-view { flex: 1; background: #000; display: flex; flex-direction: column; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* SOHBET ALANI */
-        .chat-area { height: 600px; }
-        #chat-window { flex-grow: 1; overflow-y: auto; background: #000; border-radius: 10px; padding: 10px; margin-bottom: 10px; border: 1px solid #222; font-family: monospace; font-size: 0.85rem; }
-        .msg { margin-bottom: 8px; border-bottom: 1px solid #111; padding-bottom: 4px; }
-        .msg .user { color: var(--neon); font-weight: bold; }
+        /* SAĞ PANEL: CHAT */
+        .chat-panel { width: 300px; background: var(--card); border-left: 1px solid var(--border); display: flex; flex-direction: column; padding: 15px; }
+        #chat-content { flex: 1; overflow-y: auto; background: #000; border-radius: 10px; padding: 10px; margin-bottom: 10px; border: 1px solid #222; font-family: monospace; font-size: 0.8rem; }
+        .msg { margin-bottom: 10px; }
+        .msg b { color: var(--neon); }
         .chat-input { display: flex; gap: 5px; }
-        input { background: #111; border: 1px solid #444; color: white; padding: 8px; border-radius: 5px; flex-grow: 1; outline: none; }
+        input { background: #111; border: 1px solid #333; color: white; padding: 8px; border-radius: 5px; flex: 1; outline: none; }
         button { background: var(--neon); color: black; border: none; padding: 8px 12px; border-radius: 5px; font-weight: bold; cursor: pointer; }
 
-        .panic-btn { position: fixed; bottom: 15px; right: 15px; background: #d32f2f; color: white; border: none; padding: 8px 15px; border-radius: 50px; cursor: pointer; font-weight: bold; z-index: 1000; }
+        .panic-btn { position: fixed; bottom: 20px; left: 20px; background: #d32f2f; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; z-index: 1000; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>🚨 EKİP ÖZEL VIP ÜSSÜ</h1>
-        <p style="color: #666; font-size: 0.8rem;">Erişim Onaylandı | "Cumhuriyetin Kara Yüzü" Yayında</p>
+    <div class="top-bar">
+        <h1>EKİP VIP OPERASYON MERKEZİ</h1>
+        <div class="status">BAĞLANTI: GÜVENLİ [AYAKKABI_PROTOCOL]</div>
     </div>
 
-    <div class="main-layout">
-        <div class="box">
-            <h2>🎭 Özel Strateji: Cumhuriyetin Kara Yüzü</h2>
-            <div class="game-container">
-                <iframe src="cumhuriyetin_kara_yuzu.html"></iframe>
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <h2>📦 ÖZEL OYUNLAR</h2>
+            <div class="game-list">
+                <div class="game-item" onclick="changeGame('cumhuriyetin_kara_yuzu.html')">
+                    <span>🎭</span> <span>Cumhuriyetin Kara Yüzü</span>
+                </div>
+                <div class="game-item" onclick="alert('Henüz link eklenmedi kral!')">
+                    <span>🔥</span> <span>Yakında Yeni Oyun...</span>
+                </div>
             </div>
-            <p style="font-size: 0.75rem; color: #555; margin-top: 10px;">* Bu oyun sadece VIP oda üyelerine özeldir.</p>
+            <p style="font-size: 0.7rem; color: #444; margin-top: 10px;">Linkleri bana at, buraya ekleyelim.</p>
         </div>
 
-        <div class="box chat-area">
-            <h2>💬 Ekip Chat</h2>
-            <div id="chat-window">
-                <div class="msg"><span class="user">Sistem:</span> VIP bağlantısı kuruldu.</div>
-                <div class="msg"><span class="user">Hamza:</span> Beyler oyunu VIP odaya kurdum, iyi oyunlar!</div>
+        <div class="game-view">
+            <iframe id="game-frame" src="cumhuriyetin_kara_yuzu.html"></iframe>
+        </div>
+
+        <div class="chat-panel">
+            <h2>💬 EKİP CHAT</h2>
+            <div id="chat-content">
+                <div class="msg"><b>[Sistem]:</b> VIP Odaya girildi.</div>
+                <div class="msg"><b>[Hamza]:</b> Selam beyler, operasyon başladı.</div>
             </div>
             <div class="chat-input">
-                <input type="text" id="msgInput" placeholder="Mesaj...">
-                <button onclick="sendMessage()">👉</button>
+                <input type="text" id="chatInput" placeholder="Mesaj yaz...">
+                <button onclick="sendMsg()">></button>
             </div>
         </div>
     </div>
 
-    <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
+    <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">HIZLI EBA</button>
 
     <script>
-        function sendMessage() {
-            const input = document.getElementById('msgInput');
-            const windowDiv = document.getElementById('chat-window');
-            if(input.value.trim() !== "") {
-                const newMsg = document.createElement('div');
-                newMsg.className = 'msg';
-                newMsg.innerHTML = `<span class="user">Sen:</span> ${input.value}`;
-                windowDiv.appendChild(newMsg);
-                windowDiv.scrollTop = windowDiv.scrollHeight;
+        // Oyun Değiştirme Fonksiyonu
+        function changeGame(url) {
+            document.getElementById('game-frame').src = url;
+        }
+
+        // Mesaj Gönderme
+        function sendMsg() {
+            let input = document.getElementById('chatInput');
+            let content = document.getElementById('chat-content');
+            if(input.value !== "") {
+                let div = document.createElement('div');
+                div.className = "msg";
+                div.innerHTML = `<b>[Sen]:</b> ${input.value}`;
+                content.appendChild(div);
+                content.scrollTop = content.scrollHeight;
                 input.value = "";
             }
         }
-        document.getElementById('msgInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
-        document.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr'; });
+
+        // Enter ile mesaj gönderme
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') sendMsg();
+        });
+
+        // P Tuşu Kaçışı
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr';
+        });
     </script>
 </body>
 </html>
