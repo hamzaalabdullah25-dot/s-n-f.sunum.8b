@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8/B Bilişim Proje Portalı</title>
+    <title>EKİP PROJECTS | Official</title>
     <style>
         :root {
             --neon: #00ff00;
@@ -13,7 +13,7 @@
         body {
             background-color: var(--bg);
             color: white;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -22,57 +22,57 @@
         }
         .header {
             text-align: center;
-            padding: 50px 20px;
-            width: 100%;
+            padding: 60px 20px;
         }
         h1 {
-            font-size: 2.5rem;
             color: var(--neon);
-            text-shadow: 0 0 10px rgba(0,255,0,0.3);
+            font-size: 3rem;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+            margin: 0;
+            letter-spacing: 5px;
         }
+        p { color: #888; margin-top: 10px; }
+
         .container {
-            max-width: 1000px;
-            padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             width: 90%;
+            max-width: 1000px;
+            padding-bottom: 50px;
         }
         .card {
             background: var(--card);
             border: 1px solid #333;
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 30px;
             text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
             text-decoration: none;
             color: white;
+            transition: 0.4s;
+            cursor: pointer;
         }
         .card:hover {
             border-color: var(--neon);
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
         }
+        .card h3 { color: var(--neon); font-size: 1.5rem; margin-bottom: 10px; }
         
-        /* İŞTE O KURTARICI BUTON */
-        .panic-button {
+        /* PANİK BUTONU */
+        .panic-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #d32f2f; /* Kırmızı ama çok parlak değil */
+            background: #d32f2f;
             color: white;
             border: none;
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: bold;
             cursor: pointer;
+            z-index: 1000;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            z-index: 9999;
-            transition: 0.2s;
-        }
-        .panic-button:hover {
-            background: #f44336;
-            transform: scale(1.1);
         }
     </style>
 </head>
@@ -80,31 +80,42 @@
 
     <div class="header">
         <h1>EKİP PROJECTS</h1>
-        <p style="color: #888;">Bilişim Teknolojileri ve Yazılım Uygulama Alanı</p>
+        <p>Bilişim Teknolojileri ve Yazılım Paneli</p>
     </div>
 
     <div class="container">
         <a href="/projects.html" class="card">
             <h3>🎮 Oyun Arşivi</h3>
-            <p>MEB Engeli Olmayan Güncel Oyunlar</p>
+            <p>Okulda Engellenmeyen Güncel Oyun Listesi</p>
         </a>
+
         <a href="#" class="card">
             <h3>🎵 Proje Müzikleri</h3>
             <p>Arka Plan Drill & Lo-fi Mixler</p>
         </a>
-    
-    <a href="/ekip.html" class="card">
-    <h3>👥 Geliştirici Ekibi</h3>
-    <p>8/B'nin Arkasındaki Güçle Tanışın</p>
-    </a>
-    
+
+        <div class="card" onclick="gizliGiris()">
+            <h3>🔒 VIP Ekip Paneli</h3>
+            <p>Sadece Yetkili Ekip Girebilir (Şifreli)</p>
+        </div>
     </div>
-    <button class="panic-button" onclick="window.location.href='https://www.eba.gov.tr'">
-        Hızlı Ders Notu (EBA)
-    </button>
+
+    <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
 
     <script>
-        // Klavyeyi de yine de açık bıraktım, ne olur ne olmaz (P tuşu)
+        // ŞİFRE MEKANİZMASI
+        function gizliGiris() {
+            var sifre = prompt("Güvenlik Kodu Girin:");
+            // Şifreyi küçük harfe çevirip kontrol eder
+            if (sifre && sifre.toLowerCase() === "ayakkabı") {
+                alert("Erişim Onaylandı! Hoş geldin kral.");
+                window.location.href = "/ekip.html";
+            } else if (sifre) {
+                alert("Hatalı Kod! Sistemden uzaklaşın.");
+            }
+        }
+
+        // KLAVYE KISAYOLU (P TUŞU)
         document.addEventListener('keydown', function(e) {
             if (e.key.toLowerCase() === 'p') {
                 window.location.href = 'https://www.eba.gov.tr';
