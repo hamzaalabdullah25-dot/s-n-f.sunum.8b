@@ -3,90 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EKİP | Geliştirici Kadrosu</title>
+    <title>EKİP | VIP ÜS</title>
     <style>
         :root { --neon: #00ff00; --bg: #0a0a0a; --card: #1a1a1a; }
-        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; text-align: center; }
-        .header { padding: 50px 20px; }
-        h1 { color: var(--neon); text-shadow: 0 0 15px rgba(0,255,0,0.4); font-size: 2.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .member-card { background: var(--card); border: 1px solid #333; border-radius: 15px; padding: 25px; transition: 0.3s; }
-        .member-card:hover { border-color: var(--neon); transform: translateY(-5px); }
-        .name { font-weight: bold; font-size: 1.2rem; color: var(--neon); margin-bottom: 5px; }
-        .role { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
+        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; }
+        .header { text-align: center; padding: 20px; border-bottom: 2px solid var(--neon); margin-bottom: 20px; }
+        h1 { color: var(--neon); text-shadow: 0 0 15px rgba(0,255,0,0.4); margin: 0; font-size: 1.8rem; }
         
-        /* INSTAGRAM BUTONLARI */
-        .ig-link {
-            display: inline-block;
-            padding: 8px 18px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .ig-link:hover { transform: scale(1.1); box-shadow: 0 0 15px rgba(188, 24, 136, 0.4); }
+        .main-layout { display: grid; grid-template-columns: 1fr 300px; gap: 15px; max-width: 1400px; margin: 0 auto; }
+        
+        .box { background: var(--card); border: 1px solid #333; border-radius: 15px; padding: 15px; display: flex; flex-direction: column; }
+        .box h2 { color: var(--neon); border-bottom: 1px solid #444; padding-bottom: 10px; margin-top: 0; font-size: 1.2rem; }
 
-        .panic-btn { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; z-index: 1000; }
+        /* OYUN ALANI */
+        .game-container { flex-grow: 1; height: 600px; border: 2px solid #222; border-radius: 10px; overflow: hidden; background: #000; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* SOHBET ALANI */
+        .chat-area { height: 600px; }
+        #chat-window { flex-grow: 1; overflow-y: auto; background: #000; border-radius: 10px; padding: 10px; margin-bottom: 10px; border: 1px solid #222; font-family: monospace; font-size: 0.85rem; }
+        .msg { margin-bottom: 8px; border-bottom: 1px solid #111; padding-bottom: 4px; }
+        .msg .user { color: var(--neon); font-weight: bold; }
+        .chat-input { display: flex; gap: 5px; }
+        input { background: #111; border: 1px solid #444; color: white; padding: 8px; border-radius: 5px; flex-grow: 1; outline: none; }
+        button { background: var(--neon); color: black; border: none; padding: 8px 12px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
+        .panic-btn { position: fixed; bottom: 15px; right: 15px; background: #d32f2f; color: white; border: none; padding: 8px 15px; border-radius: 50px; cursor: pointer; font-weight: bold; z-index: 1000; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1>8/B EKİP KADROSU</h1>
-        <p>Yazılım, Tasarım ve Strateji Birimi</p>
+        <h1>🚨 EKİP ÖZEL VIP ÜSSÜ</h1>
+        <p style="color: #666; font-size: 0.8rem;">Erişim Onaylandı | "Cumhuriyetin Kara Yüzü" Yayında</p>
     </div>
 
-    <div class="grid">
-        <div class="member-card">
-            <div class="name">Hamza</div>
-            <div class="role">Founder & Developer</div>
-            <a href="https://www.instagram.com/hamzaala71" target="_blank" class="ig-link">Instagram</a>
+    <div class="main-layout">
+        <div class="box">
+            <h2>🎭 Özel Strateji: Cumhuriyetin Kara Yüzü</h2>
+            <div class="game-container">
+                <iframe src="cumhuriyetin_kara_yuzu.html"></iframe>
+            </div>
+            <p style="font-size: 0.75rem; color: #555; margin-top: 10px;">* Bu oyun sadece VIP oda üyelerine özeldir.</p>
         </div>
 
-        <div class="member-card">
-            <div class="name">Mamat (Mehmet Eren)</div>
-            <div class="role">Project Manager</div>
-            <a href="https://www.instagram.com/mehmeteren_71" target="_blank" class="ig-link">Instagram</a>
-        </div>
-
-        <div class="member-card">
-            <div class="name">Alperen</div>
-            <div class="role">UI Designer</div>
-            <a href="https://www.instagram.com/wq_alperen71" target="_blank" class="ig-link">Instagram</a>
-        </div>
-
-        <div class="member-card">
-            <div class="name">Enes</div>
-            <div class="role">Backend Developer</div>
-            <a href="https://www.instagram.com/wq_enes71" target="_blank" class="ig-link">Instagram</a>
-        </div>
-
-        <div class="member-card">
-            <div class="name">Bilal</div>
-            <div class="role">Cyber Security</div>
-            <a href="https://www.instagram.com/bilalefeekc" target="_blank" class="ig-link">Instagram</a>
-        </div>
-
-        <div class="member-card">
-            <div class="name">Zeynel</div>
-            <div class="role">Creative Director</div>
-        </div>
-
-        <div class="member-card">
-            <div class="name">Resul</div>
-            <div class="role">Testing & QA</div>
+        <div class="box chat-area">
+            <h2>💬 Ekip Chat</h2>
+            <div id="chat-window">
+                <div class="msg"><span class="user">Sistem:</span> VIP bağlantısı kuruldu.</div>
+                <div class="msg"><span class="user">Hamza:</span> Beyler oyunu VIP odaya kurdum, iyi oyunlar!</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="msgInput" placeholder="Mesaj...">
+                <button onclick="sendMessage()">👉</button>
+            </div>
         </div>
     </div>
 
     <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
 
     <script>
-        document.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr';
-        });
+        function sendMessage() {
+            const input = document.getElementById('msgInput');
+            const windowDiv = document.getElementById('chat-window');
+            if(input.value.trim() !== "") {
+                const newMsg = document.createElement('div');
+                newMsg.className = 'msg';
+                newMsg.innerHTML = `<span class="user">Sen:</span> ${input.value}`;
+                windowDiv.appendChild(newMsg);
+                windowDiv.scrollTop = windowDiv.scrollHeight;
+                input.value = "";
+            }
+        }
+        document.getElementById('msgInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+        document.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr'; });
     </script>
 </body>
 </html>
