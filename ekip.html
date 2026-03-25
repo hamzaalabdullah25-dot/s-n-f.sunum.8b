@@ -3,112 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EKİP | VIP BASE</title>
+    <title>VIP OPERASYON MERKEZİ</title>
     <style>
-        :root { --neon: #00ff00; --bg: #050505; --card: #111; --border: #222; }
-        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        :root { --neon: #00ff00; --bg: #050505; }
+        body { background-color: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; }
         
-        /* HEADER */
-        .top-bar { padding: 15px 30px; background: #000; border-bottom: 2px solid var(--neon); display: flex; justify-content: space-between; align-items: center; }
-        .top-bar h1 { color: var(--neon); margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
-        .status { color: #555; font-size: 0.8rem; }
+        /* ÜST BİLGİ */
+        .header { height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid #222; background: #000; }
+        .header h1 { color: var(--neon); font-size: 1rem; margin: 0; letter-spacing: 2px; }
 
-        /* ANA PANEL */
-        .main-wrapper { display: flex; flex: 1; overflow: hidden; }
-
-        /* SOL PANEL: ÖZEL OYUNLAR & LİNKLER */
-        .sidebar { width: 300px; background: var(--card); border-right: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; }
-        .sidebar h2 { color: var(--neon); font-size: 1rem; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .game-list { list-style: none; padding: 0; flex: 1; overflow-y: auto; }
-        .game-item { background: #1a1a1a; margin-bottom: 10px; padding: 12px; border-radius: 8px; border: 1px solid #222; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
-        .game-item:hover { border-color: var(--neon); background: #222; }
-        .game-item span { font-size: 0.9rem; font-weight: bold; }
-
-        /* ORTA PANEL: OYUN EKRANI */
-        .game-view { flex: 1; background: #000; display: flex; flex-direction: column; }
+        /* ANA OYUN EKRANI (DEV GİBİ) */
+        .game-area { width: 100vw; height: calc(100vh - 110px); background: #000; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* SAĞ PANEL: CHAT */
-        .chat-panel { width: 300px; background: var(--card); border-left: 1px solid var(--border); display: flex; flex-direction: column; padding: 15px; }
-        #chat-content { flex: 1; overflow-y: auto; background: #000; border-radius: 10px; padding: 10px; margin-bottom: 10px; border: 1px solid #222; font-family: monospace; font-size: 0.8rem; }
-        .msg { margin-bottom: 10px; }
-        .msg b { color: var(--neon); }
-        .chat-input { display: flex; gap: 5px; }
-        input { background: #111; border: 1px solid #333; color: white; padding: 8px; border-radius: 5px; flex: 1; outline: none; }
-        button { background: var(--neon); color: black; border: none; padding: 8px 12px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        /* ALT PANEL: CHAT VE KONTROL */
+        .bottom-bar { height: 60px; background: #111; display: flex; align-items: center; padding: 0 20px; gap: 15px; border-top: 1px solid #333; }
+        #chat-display { flex: 1; height: 40px; background: #000; border-radius: 5px; padding: 0 15px; display: flex; align-items: center; color: var(--neon); font-family: monospace; font-size: 0.9rem; overflow: hidden; border: 1px solid #222; }
+        input { background: #000; border: 1px solid #444; color: white; padding: 10px; border-radius: 5px; width: 250px; outline: none; }
+        button { background: var(--neon); color: black; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
 
-        .panic-btn { position: fixed; bottom: 20px; left: 20px; background: #d32f2f; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; z-index: 1000; }
+        .panic-btn { position: fixed; top: 10px; right: 10px; background: #d32f2f; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; font-weight: bold; z-index: 1000; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <h1>EKİP VIP OPERASYON MERKEZİ</h1>
-        <div class="status">BAĞLANTI: GÜVENLİ [AYAKKABI_PROTOCOL]</div>
-    </div>
-
-    <div class="main-wrapper">
-        <div class="sidebar">
-            <h2>📦 ÖZEL OYUNLAR</h2>
-            <div class="game-list">
-                <div class="game-item" onclick="changeGame('cumhuriyetin_kara_yuzu.html')">
-                    <span>🎭</span> <span>Cumhuriyetin Kara Yüzü</span>
-                </div>
-                <div class="game-item" onclick="alert('Henüz link eklenmedi kral!')">
-                    <span>🔥</span> <span>Yakında Yeni Oyun...</span>
-                </div>
-            </div>
-            <p style="font-size: 0.7rem; color: #444; margin-top: 10px;">Linkleri bana at, buraya ekleyelim.</p>
-        </div>
-
-        <div class="game-view">
-            <iframe id="game-frame" src="cumhuriyetin_kara_yuzu.html"></iframe>
-        </div>
-
-        <div class="chat-panel">
-            <h2>💬 EKİP CHAT</h2>
-            <div id="chat-content">
-                <div class="msg"><b>[Sistem]:</b> VIP Odaya girildi.</div>
-                <div class="msg"><b>[Hamza]:</b> Selam beyler, operasyon başladı.</div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Mesaj yaz...">
-                <button onclick="sendMsg()">></button>
-            </div>
-        </div>
-    </div>
-
     <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">HIZLI EBA</button>
 
-    <script>
-        // Oyun Değiştirme Fonksiyonu
-        function changeGame(url) {
-            document.getElementById('game-frame').src = url;
-        }
+    <div class="header">
+        <h1>🚨 VIP BASE: CUMHURİYETİN KARA YÜZÜ</h1>
+        <span style="color:#444; font-size:0.7rem;">DURUM: AKTİF</span>
+    </div>
 
-        // Mesaj Gönderme
+    <div class="game-area">
+        <iframe src="cumhuriyetin_kara_yuzu.html"></iframe>
+    </div>
+
+    <div class="bottom-bar">
+        <div id="chat-display">
+            <span id="msg-text">Hoş geldin kral. Ekip chat aktif!</span>
+        </div>
+        <input type="text" id="userInput" placeholder="Mesajını yaz...">
+        <button onclick="sendMsg()">GÖNDER</button>
+    </div>
+
+    <script>
         function sendMsg() {
-            let input = document.getElementById('chatInput');
-            let content = document.getElementById('chat-content');
+            let input = document.getElementById('userInput');
+            let display = document.getElementById('msg-text');
             if(input.value !== "") {
-                let div = document.createElement('div');
-                div.className = "msg";
-                div.innerHTML = `<b>[Sen]:</b> ${input.value}`;
-                content.appendChild(div);
-                content.scrollTop = content.scrollHeight;
+                display.innerHTML = "<b>[Sen]:</b> " + input.value;
                 input.value = "";
             }
         }
-
-        // Enter ile mesaj gönderme
-        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+        document.getElementById('userInput').addEventListener('keypress', function(e) {
             if(e.key === 'Enter') sendMsg();
         });
-
-        // P Tuşu Kaçışı
-        document.addEventListener('keydown', function(e) {
-            if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr';
-        });
+        document.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr'; });
     </script>
 </body>
 </html>
