@@ -7,64 +7,35 @@
     <style>
         :root { --neon: #00ff00; --gold: #c9a84c; --bg: #0a0805; }
         body { 
-            background: var(--bg); 
-            color: white; 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            height: 100vh; 
-            text-align: center;
+            background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; 
+            margin: 0; display: flex; flex-direction: column; align-items: center; 
+            justify-content: center; height: 100vh; text-align: center;
         }
         .container {
-            padding: 40px;
-            border: 2px solid var(--gold);
-            background: #111;
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(201, 168, 76, 0.2);
-            max-width: 500px;
+            padding: 40px; border: 2px solid var(--gold); background: #111;
+            border-radius: 20px; box-shadow: 0 0 30px rgba(201, 168, 76, 0.2); max-width: 500px;
         }
         h1 { color: var(--neon); letter-spacing: 3px; margin-bottom: 10px; }
-        p { color: #888; margin-bottom: 30px; }
-        
-        /* OYUN BAŞLATMA BUTONU */
         .btn {
-            display: block;
-            padding: 20px;
-            background: #2c1f0e;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 10px;
-            transition: 0.3s;
-            cursor: pointer;
+            display: block; padding: 20px; background: #2c1f0e; color: var(--gold); 
+            border: 2px solid var(--gold); text-decoration: none; font-weight: bold; 
+            font-size: 1.2rem; border-radius: 10px; transition: 0.3s; cursor: pointer;
         }
-        .btn:hover {
-            background: var(--gold);
-            color: black;
-            box-shadow: 0 0 20px var(--gold);
-        }
-
-        .footer-note { margin-top: 20px; font-size: 0.8rem; color: #444; }
+        .btn:hover { background: var(--gold); color: black; box-shadow: 0 0 20px var(--gold); }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>🚨 VIP ÜS ONAYLANDI</h1>
-        <p>Ekip Üyesi: 8/B - Hamza<br>Durum: Yetkili Erişim</p>
+        <p>Dosya Adını Kontrol Ederek Başlatılıyor...</p>
 
         <a href="cumhuriyetin_kara_yuzu.html" class="btn">🎮 OPERASYONU BAŞLAT</a>
         
-        <p class="footer-note">Hoca gelirse 'P' tuşuna basmayı unutma!</p>
+        <p style="margin-top:20px; font-size:0.7rem; color:#555;">Hata alıyorsan dosya adının tam olarak 'cumhuriyetin_kara_yuzu.html' olduğundan emin ol kral.</p>
     </div>
 
     <script>
-        // P Tuşu Koruması
         document.addEventListener('keydown', (e) => {
             if (e.key.toLowerCase() === 'p') window.location.href = 'https://www.eba.gov.tr';
         });
