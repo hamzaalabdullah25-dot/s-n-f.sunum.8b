@@ -3,72 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8. Sınıf LGS Notları ve MEB Müfredatı</title>
+    <title>8. Sınıf LGS Notları</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
     
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; transition: 0.3s; }
-        /* Kamuflaj Tasarımı */
-        #study-page { padding: 20px; text-align: center; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; overflow: hidden; }
+        #study-page { padding: 20px; text-align: center; height: 100vh; overflow-y: auto; }
         .lesson-card { background: white; border-left: 5px solid #2196F3; margin: 10px auto; padding: 15px; max-width: 500px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         
-        /* Gizli Panel Tasarımı */
-        #secret-panel { display: none; padding: 20px; background: #121212; color: #00ff00; min-height: 100vh; text-align: center; }
-        .eba-button { background: #ff4444; color: white; border: none; padding: 15px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 5px; margin-bottom: 20px; }
+        #secret-panel { display: none; background: #121212; color: #00ff00; height: 100vh; width: 100vw; text-align: center; position: fixed; top: 0; left: 0; z-index: 1000; }
+        .eba-button { background: #ff4444; color: white; border: none; padding: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; }
         
-        /* Chat Kutusu */
-        #chat-container { background: #1e1e1e; border-radius: 10px; padding: 15px; margin-top: 20px; border: 1px solid #333; }
-        #messages { height: 250px; overflow-y: auto; border-bottom: 1px solid #333; margin-bottom: 10px; padding: 10px; text-align: left; color: #ddd; font-size: 14px; }
-        .msg-unit { margin-bottom: 8px; padding: 5px; border-radius: 5px; background: #2a2a2a; }
-        .msg-user { color: #00ff00; font-weight: bold; margin-right: 5px; }
+        #menu-content { padding: 20px; }
+        #game-wrapper { display:none; width: 100%; height: calc(100vh - 60px); background: #000; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        #chat-container { background: #1e1e1e; border-radius: 10px; padding: 10px; margin-top: 20px; border: 1px solid #333; max-width: 400px; margin-left: auto; margin-right: auto; }
+        #messages { height: 150px; overflow-y: auto; border-bottom: 1px solid #333; margin-bottom: 10px; padding: 10px; text-align: left; color: #ddd; font-size: 13px; }
+        .msg-unit { margin-bottom: 5px; padding: 5px; background: #2a2a2a; border-left: 3px solid #00ff00; }
         
-        input[type="text"] { width: 65%; padding: 10px; border: none; border-radius: 5px; background: #333; color: white; }
-        .send-btn { width: 28%; padding: 10px; background: #00ff00; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        input[type="text"] { width: 60%; padding: 10px; border: none; border-radius: 5px; background: #333; color: white; }
+        .send-btn { width: 30%; padding: 10px; background: #00ff00; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .game-btn { padding: 12px 25px; margin: 8px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <div id="study-page">
-        <h2 style="color: #1565C0;">MEB 8. Sınıf Başarı Portalı</h2>
-        <div class="lesson-card">
-            <h3>Matematik: Kareköklü İfadeler</h3>
-            <p>√a · √b = √a · b kuralını unutmayın!</p>
-        </div>
-        <div class="lesson-card">
-            <h3>Fen Bilimleri: Mevsimler</h3>
-            <p>Eksen eğikliği 23° 27' dakikadır. LGS'de çıkar!</p>
-        </div>
-        
-        <p style="margin-top: 150px; color: #bbb; font-size: 11px;">
-            Sistem Durumu: Aktif | <span id="formulleri-goster" style="cursor: pointer; text-decoration: underline;">Formülleri Göster</span>
+        <h2 style="color: #1565C0;">8. Sınıf MEB LGS Portalı</h2>
+        <div class="lesson-card"><h3>Matematik</h3><p>Kareköklü sayılarda toplama ve çıkarma kuralları...</p></div>
+        <div class="lesson-card"><h3>Fen Bilimleri</h3><p>DNA ve Genetik Kod, Mutasyon, Modifikasyon...</p></div>
+        <p style="margin-top: 300px; color: #bbb; font-size: 10px;">
+            v2.1 Güvenli Mod | <span id="secret-trigger" style="cursor: pointer; text-decoration: underline;">Formülleri Göster</span>
         </p>
     </div>
 
     <div id="secret-panel">
-        <button class="eba-button" onclick="acilEba()">HIZLI EBA (HOCA GELİYOR!)</button>
-        <h3>🎮 EKİP PROJECTS PANEL</h3>
+        <button class="eba-button" onclick="location.href='https://www.eba.gov.tr'">HIZLI EBA (ÖĞRETMEN GELDİ!)</button>
         
-        <div style="margin: 20px 0;">
-            <button onclick="window.location.href='https://poki.com'" style="padding:10px;">Poki Oyunlar</button>
-            <button onclick="window.location.href='https://crazygames.com'" style="padding:10px;">CrazyGames</button>
+        <div id="menu-content">
+            <h3 style="margin: 10px 0;">🎮 EKİP PROJECTS (Kendi Oyunların)</h3>
+            
+            <button class="game-btn" onclick="oyunAc('oyun1.html')">Yılan Oyunu</button>
+            <button class="game-btn" onclick="oyunAc('araba.html')">Araba Yarışı</button>
+            <button class="game-btn" onclick="oyunAc('tetris.html')">Tetris</button>
+
+            <div id="chat-container">
+                <p style="font-size: 11px;">💬 Okul Chat (24 Saatlik)</p>
+                <div id="messages">Bağlanıyor...</div>
+                <input type="text" id="chat-msg" placeholder="Mesaj...">
+                <button class="send-btn" onclick="mesajGonder()">GÖNDER</button>
+            </div>
         </div>
 
-        <div id="chat-container">
-            <p>💬 <b>Global Okul Chat (24 Saatlik)</b></p>
-            <div id="messages">Yükleniyor...</div>
-            <input type="text" id="chat-msg" placeholder="Mesajın...">
-            <button class="send-btn" onclick="mesajGonder()">GÖNDER</button>
+        <div id="game-wrapper">
+            <button onclick="oyunKapat()" style="background:#333; color:#00ff00; border:none; padding:8px; cursor:pointer; width:100%; font-weight:bold;">← OYUNU KAPAT VE CHAT'E DÖN</button>
+            <iframe id="game-frame"></iframe>
         </div>
     </div>
 
     <script>
-        // --- FIREBASE AYARLARI ---
         const firebaseConfig = {
             apiKey: "AIzaSyA62N-IBngKuO2adttfCzXAzpGeXozCu6g",
             authDomain: "sinifnotlari-chat.firebaseapp.com",
             projectId: "sinifnotlari-chat",
-            databaseURL: "https://sinifnotlari-chat-default-rtdb.europe-west1.firebasedatabase.app", // NOT: Database URL'ini Firebase panelinden kontrol et
+            databaseURL: "https://sinifnotlari-chat-default-rtdb.europe-west1.firebasedatabase.app",
             storageBucket: "sinifnotlari-chat.firebasestorage.app",
             messagingSenderId: "260356759657",
             appId: "1:260356759657:web:4d8de7b1d89d3bfc8382f8"
@@ -77,50 +77,45 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.database().ref("global_chat");
 
-        // --- GİZLİ PANEL AÇILIŞI ---
-        document.getElementById('formulleri-goster').onclick = function() {
+        document.getElementById('secret-trigger').onclick = function() {
             document.getElementById('study-page').style.display = 'none';
             document.getElementById('secret-panel').style.display = 'block';
-            mesajlariDinle(); // Panel açılınca mesajları çek
+            mesajlariDinle();
         };
 
-        function acilEba() { window.location.href = "https://www.eba.gov.tr"; }
+        // Kendi GitHub dosyalarını açar, MEB engellemez!
+        function oyunAc(url) {
+            document.getElementById('menu-content').style.display = 'none';
+            document.getElementById('game-wrapper').style.display = 'block';
+            document.getElementById('game-frame').src = url;
+        }
 
-        // --- CHAT SİSTEMİ ---
+        function oyunKapat() {
+            document.getElementById('game-wrapper').style.display = 'none';
+            document.getElementById('menu-content').style.display = 'block';
+            document.getElementById('game-frame').src = "";
+        }
+
         function mesajGonder() {
             const input = document.getElementById('chat-msg');
             if(input.value.trim() !== "") {
-                db.push({
-                    user: "Öğrenci_" + Math.floor(Math.random() * 999),
-                    text: input.value,
-                    vakit: Date.now()
-                });
+                db.push({ user: "Misafir_" + Math.floor(Math.random()*99), text: input.value, vakit: Date.now() });
                 input.value = "";
             }
         }
 
         function mesajlariDinle() {
-            db.on('value', (snapshot) => {
-                const data = snapshot.val();
-                const msgBox = document.getElementById('messages');
-                msgBox.innerHTML = "";
-                const suAn = Date.now();
-                const birGun = 24 * 60 * 60 * 1000;
-
+            db.on('value', (s) => {
+                const data = s.val();
+                const box = document.getElementById('messages');
+                box.innerHTML = "";
                 if(data) {
-                    Object.keys(data).forEach(key => {
-                        const m = data[key];
-                        // 24 saat kontrolü ve OTOMATİK SİLME
-                        if (suAn - m.vakit > birGun) {
-                            firebase.database().ref("global_chat/" + key).remove();
-                        } else {
-                            msgBox.innerHTML += `<div class="msg-unit"><span class="msg-user">${m.user}:</span> ${m.text}</div>`;
-                        }
+                    Object.keys(data).forEach(k => {
+                        if (Date.now() - data[k].vakit > 86400000) firebase.database().ref("global_chat/"+k).remove();
+                        else box.innerHTML += `<div class="msg-unit"><b>${data[k].user}:</b> ${data[k].text}</div>`;
                     });
-                    msgBox.scrollTop = msgBox.scrollHeight;
-                } else {
-                    msgBox.innerHTML = "Henüz mesaj yok. İlk yazan sen ol!";
-                }
+                    box.scrollTop = box.scrollHeight;
+                } else { box.innerHTML = "Mesaj yok."; }
             });
         }
     </script>
