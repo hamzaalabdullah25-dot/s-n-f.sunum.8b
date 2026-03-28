@@ -3,121 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8. Sınıf LGS Notları</title>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-    
+    <title>EKİP PROJECTS | Official</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; margin: 0; overflow: hidden; }
-        #study-page { padding: 20px; text-align: center; height: 100vh; overflow-y: auto; }
-        .lesson-card { background: white; border-left: 5px solid #2196F3; margin: 10px auto; padding: 15px; max-width: 500px; text-align: left; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        
-        #secret-panel { display: none; background: #121212; color: #00ff00; height: 100vh; width: 100vw; text-align: center; position: fixed; top: 0; left: 0; z-index: 1000; }
-        .eba-button { background: #ff4444; color: white; border: none; padding: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 16px; }
-        
-        #menu-content { padding: 20px; }
-        #game-wrapper { display:none; width: 100%; height: calc(100vh - 60px); background: #000; }
-        iframe { width: 100%; height: 100%; border: none; }
+        :root {
+            --neon: #00ff00;
+            --bg: #0a0a0a;
+            --card: #1a1a1a;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        h1 {
+            color: var(--neon);
+            font-size: 3rem;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+            margin: 0;
+            letter-spacing: 5px;
+        }
+        p { color: #888; margin-top: 10px; }
 
-        #chat-container { background: #1e1e1e; border-radius: 10px; padding: 10px; margin-top: 20px; border: 1px solid #333; max-width: 400px; margin-left: auto; margin-right: auto; }
-        #messages { height: 150px; overflow-y: auto; border-bottom: 1px solid #333; margin-bottom: 10px; padding: 10px; text-align: left; color: #ddd; font-size: 13px; }
-        .msg-unit { margin-bottom: 5px; padding: 5px; background: #2a2a2a; border-left: 3px solid #00ff00; }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 90%;
+            max-width: 1000px;
+            padding-bottom: 50px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        .card:hover {
+            border-color: var(--neon);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        .card h3 { color: var(--neon); font-size: 1.5rem; margin-bottom: 10px; }
         
-        input[type="text"] { width: 60%; padding: 10px; border: none; border-radius: 5px; background: #333; color: white; }
-        .send-btn { width: 30%; padding: 10px; background: #00ff00; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        .game-btn { padding: 12px 25px; margin: 8px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        /* PANİK BUTONU */
+        .panic-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
 
-    <div id="study-page">
-        <h2 style="color: #1565C0;">8. Sınıf MEB LGS Portalı</h2>
-        <div class="lesson-card"><h3>Matematik</h3><p>Kareköklü sayılarda toplama ve çıkarma kuralları...</p></div>
-        <div class="lesson-card"><h3>Fen Bilimleri</h3><p>DNA ve Genetik Kod, Mutasyon, Modifikasyon...</p></div>
-        <p style="margin-top: 300px; color: #bbb; font-size: 10px;">
-            v2.1 Güvenli Mod | <span id="secret-trigger" style="cursor: pointer; text-decoration: underline;">Formülleri Göster</span>
-        </p>
+    <div class="header">
+        <h1>EKİP PROJECTS</h1>
+        <p>Bilişim Teknolojileri ve Yazılım Paneli</p>
     </div>
 
-    <div id="secret-panel">
-        <button class="eba-button" onclick="location.href='https://www.eba.gov.tr'">HIZLI EBA (ÖĞRETMEN GELDİ!)</button>
-        
-        <div id="menu-content">
-            <h3 style="margin: 10px 0;">🎮 EKİP PROJECTS (Kendi Oyunların)</h3>
-            
-            <button class="game-btn" onclick="oyunAc('oyun1.html')">Yılan Oyunu</button>
-            <button class="game-btn" onclick="oyunAc('araba.html')">Araba Yarışı</button>
-            <button class="game-btn" onclick="oyunAc('tetris.html')">Tetris</button>
+    <div class="container">
+        <a href="/projects.html" class="card">
+            <h3>🎮 Oyun Arşivi</h3>
+            <p>Okulda Engellenmeyen Güncel Oyun Listesi</p>
+        </a>
 
-            <div id="chat-container">
-                <p style="font-size: 11px;">💬 Okul Chat (24 Saatlik)</p>
-                <div id="messages">Bağlanıyor...</div>
-                <input type="text" id="chat-msg" placeholder="Mesaj...">
-                <button class="send-btn" onclick="mesajGonder()">GÖNDER</button>
-            </div>
-        </div>
+        <a href="#" class="card">
+            <h3>🎵 Proje Müzikleri</h3>
+            <p>Arka Plan Drill & Lo-fi Mixler</p>
+        </a>
 
-        <div id="game-wrapper">
-            <button onclick="oyunKapat()" style="background:#333; color:#00ff00; border:none; padding:8px; cursor:pointer; width:100%; font-weight:bold;">← OYUNU KAPAT VE CHAT'E DÖN</button>
-            <iframe id="game-frame"></iframe>
+        <div class="card" onclick="gizliGiris()">
+            <h3>🔒 VIP Ekip Paneli</h3>
+            <p>Sadece Yetkili Ekip Girebilir (Şifreli)</p>
         </div>
     </div>
+
+    <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
 
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyA62N-IBngKuO2adttfCzXAzpGeXozCu6g",
-            authDomain: "sinifnotlari-chat.firebaseapp.com",
-            projectId: "sinifnotlari-chat",
-            databaseURL: "https://sinifnotlari-chat-default-rtdb.europe-west1.firebasedatabase.app",
-            storageBucket: "sinifnotlari-chat.firebasestorage.app",
-            messagingSenderId: "260356759657",
-            appId: "1:260356759657:web:4d8de7b1d89d3bfc8382f8"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database().ref("global_chat");
-
-        document.getElementById('secret-trigger').onclick = function() {
-            document.getElementById('study-page').style.display = 'none';
-            document.getElementById('secret-panel').style.display = 'block';
-            mesajlariDinle();
-        };
-
-        // Kendi GitHub dosyalarını açar, MEB engellemez!
-        function oyunAc(url) {
-            document.getElementById('menu-content').style.display = 'none';
-            document.getElementById('game-wrapper').style.display = 'block';
-            document.getElementById('game-frame').src = url;
-        }
-
-        function oyunKapat() {
-            document.getElementById('game-wrapper').style.display = 'none';
-            document.getElementById('menu-content').style.display = 'block';
-            document.getElementById('game-frame').src = "";
-        }
-
-        function mesajGonder() {
-            const input = document.getElementById('chat-msg');
-            if(input.value.trim() !== "") {
-                db.push({ user: "Misafir_" + Math.floor(Math.random()*99), text: input.value, vakit: Date.now() });
-                input.value = "";
+        // ŞİFRE MEKANİZMASI
+        function gizliGiris() {
+            var sifre = prompt("Güvenlik Kodu Girin:");
+            // Şifreyi küçük harfe çevirip kontrol eder
+            if (sifre && sifre.toLowerCase() === "ayakkabı") {
+                alert("Erişim Onaylandı! Hoş geldin kral.");
+                window.location.href = "/ekip.html";
+            } else if (sifre) {
+                alert("Hatalı Kod! Sistemden uzaklaşın.");
             }
         }
 
-        function mesajlariDinle() {
-            db.on('value', (s) => {
-                const data = s.val();
-                const box = document.getElementById('messages');
-                box.innerHTML = "";
-                if(data) {
-                    Object.keys(data).forEach(k => {
-                        if (Date.now() - data[k].vakit > 86400000) firebase.database().ref("global_chat/"+k).remove();
-                        else box.innerHTML += `<div class="msg-unit"><b>${data[k].user}:</b> ${data[k].text}</div>`;
-                    });
-                    box.scrollTop = box.scrollHeight;
-                } else { box.innerHTML = "Mesaj yok."; }
-            });
-        }
+        // KLAVYE KISAYOLU (P TUŞU)
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'p') {
+                window.location.href = 'https://www.eba.gov.tr';
+            }
+        });
     </script>
 </body>
 </html>
