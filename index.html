@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8. Sınıf LGS Notları | MEB Güncel Müfredat</title>
     <style>
-        /* TÜM BEYAZLIKLARI VE BOŞLUKLARI YOK EDEN AYARLAR */
+        /* TÜM BEYAZLIKLARI ÖLDÜREN ANA AYARLAR */
         html, body {
             background-color: #0a0a0a; /* Arka plan her zaman senin siyahın */
             margin: 0;
@@ -18,7 +18,7 @@
 
         /* 1. KATMAN: KAMUFLAJ (LGS NOTLARI) */
         #kamuflaj-ekrani {
-            background-color: #f0f2f5; /* Notlar kısmının arka planı */
+            background-color: #f0f2f5; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -30,10 +30,9 @@
         .ders-header { background: #1a73e8; color: white; padding: 20px; text-align: center; border-radius: 12px; margin-bottom: 20px; width: 90%; max-width: 500px; }
         .ders-kart { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; border-left: 6px solid #1a73e8; box-shadow: 0 4px 6px rgba(0,0,0,0.05); width: 90%; max-width: 500px; box-sizing: border-box; }
         .ders-kart h2 { color: #1a73e8; font-size: 1.2rem; margin-top: 0; }
-        .ders-kart p { color: #555; line-height: 1.5; margin-bottom: 0; }
+        
         .ders-footer { margin-top: auto; padding: 30px 0; text-align: center; width: 100%; }
         #sinsi-link { color: #ddd; cursor: pointer; text-decoration: none; font-size: 11px; transition: 0.3s; }
-        #sinsi-link:hover { color: #aaa; }
 
         /* 2. KATMAN: SENİN ASIL EKİP PROJELERİ PANELİN */
         #asıl-panel {
@@ -47,61 +46,16 @@
             padding: 0;
             margin: 0;
         }
-        :root {
-            --neon: #00ff00;
-            --bg: #0a0a0a;
-            --card: #1a1a1a;
-        }
-        .header {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        .header h1 {
-            color: var(--neon);
-            font-size: 3rem;
-            text-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
-            margin: 0;
-            letter-spacing: 5px;
-        }
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 90%;
-            max-width: 1000px;
-            padding-bottom: 50px;
-        }
-        .card {
-            background: var(--card);
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: 0.4s;
-            cursor: pointer;
-        }
-        .card:hover {
-            border-color: var(--neon);
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
-        }
+        :root { --neon: #00ff00; --card: #1a1a1a; }
+        .header { text-align: center; padding: 60px 20px; }
+        .header h1 { color: var(--neon); font-size: 3rem; text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); margin: 0; letter-spacing: 5px; }
+        
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 90%; max-width: 1000px; padding-bottom: 50px; }
+        .card { background: var(--card); border: 1px solid #333; border-radius: 20px; padding: 30px; text-align: center; text-decoration: none; color: white; transition: 0.4s; cursor: pointer; }
+        .card:hover { border-color: var(--neon); transform: translateY(-10px); box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); }
         .card h3 { color: var(--neon); font-size: 1.5rem; margin-bottom: 10px; }
-        .panic-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #d32f2f;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+        
+        .panic-btn { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 1000; }
     </style>
 </head>
 <body>
@@ -114,22 +68,17 @@
 
         <div class="ders-kart">
             <h2>Matematik: Çarpanlar ve Katlar</h2>
-            <p>Her pozitif tam sayı, iki pozitif tam sayının çarpımı şeklinde yazılabilir. En büyük ortak bölen (EBOB) hesaplanırken ortak asal çarpanlar alınır.</p>
+            <p>Her pozitif tam sayı, iki pozitif tam sayının çarpımı şeklinde yazılabilir. EBOB hesaplanırken ortak asal çarpanlar alınır.</p>
         </div>
 
         <div class="ders-kart">
             <h2>Fen Bilimleri: Mevsimlerin Oluşumu</h2>
-            <p>Dünya'nın eksen eğikliği (23° 27') mevsimlerin oluşmasının temel sebebidir. 21 Haziran'da Kuzey Yarım Küre'de en uzun gündüz yaşanır.</p>
-        </div>
-
-        <div class="ders-kart">
-            <h2>İnkılap Tarihi: Bir Kahraman Doğuyor</h2>
-            <p>Mustafa Kemal'in doğduğu Selanik şehrinin kültürel zenginliği, onun farklı fikirlere açık bir lider olmasını sağlamıştır.</p>
+            <p>Dünya'nın eksen eğikliği mevsimlerin oluşmasının temel sebebidir. 21 Haziran'da Kuzey Yarım Küre'de en uzun gündüz yaşanır.</p>
         </div>
 
         <div class="ders-footer">
             <p style="color:#999; margin-bottom:5px;">MEB Eğitim Materyalleri Veritabanı</p>
-            <span id="sinsi-link" onclick="paneliAc()">Müfredat Veritabanı Sorgula v2.4.1</span>
+            <span id="sinsi-link" onclick="sorgulaVeAc()">Müfredat Veritabanı Sorgula v2.4.1</span>
         </div>
     </div>
 
@@ -140,15 +89,15 @@
         </div>
 
         <div class="container">
-            <a href="/projects.html" class="card">
+            <div class="card">
                 <h3>🎮 Oyun Arşivi</h3>
                 <p style="color: #888;">Okulda Engellenmeyen Güncel Oyun Listesi</p>
-            </a>
+            </div>
 
-            <a href="#" class="card">
+            <div class="card">
                 <h3>🎵 Proje Müzikleri</h3>
                 <p style="color: #888;">Arka Plan Drill & Lo-fi Mixler</p>
-            </a>
+            </div>
 
             <div class="card" onclick="gizliGiris()">
                 <h3>🔒 VIP Ekip Paneli</h3>
@@ -160,25 +109,30 @@
     </div>
 
     <script>
-        // KAMUFLAJI KAPATIP ASIL PANELİ AÇAN FONKSİYON
-        function paneliAc() {
-            document.getElementById('kamuflaj-ekrani').style.display = 'none';
-            document.getElementById('asıl-panel').style.display = 'flex';
-            window.scrollTo(0, 0); // Sayfayı en üste çek
-        }
-
-        // SENİN ŞİFRE MEKANİZMAN
-        function gizliGiris() {
-            var sifre = prompt("Güvenlik Kodu Girin:");
-            if (sifre && sifre.toLowerCase() === "ayakkabı") {
-                alert("Erişim Onaylandı! Hoş geldin kral.");
-                window.location.href = "/ekip.html";
-            } else if (sifre) {
-                alert("Hatalı Kod! Sistemden uzaklaşın.");
+        // MÜFREDAT SORGULAMA GÖRÜNÜMLÜ ŞİFRE EKRANI
+        function sorgulaVeAc() {
+            var kod = prompt("Erişim Yetki Kodunu Girin:");
+            
+            // Şifreyi buraya 'ayakkabı' olarak kurdum kral
+            if (kod && kod.toLowerCase() === "ayakkabı") {
+                document.getElementById('kamuflaj-ekrani').style.display = 'none';
+                document.getElementById('asıl-panel').style.display = 'flex';
+                window.scrollTo(0, 0);
+            } else if (kod) {
+                alert("Erişim Reddedildi! Hatalı Yetki Kodu.");
             }
         }
 
-        // KLAVYE KISAYOLU (P TUŞU)
+        // VIP PANEL İÇİN EKSTRA GÜVENLİK
+        function gizliGiris() {
+            var sifre = prompt("VIP Giriş Şifresi:");
+            if (sifre && sifre.toLowerCase() === "ayakkabı") {
+                alert("Hoş geldin kral. VIP dosyalara erişim açıldı.");
+                // Buraya kendi ekip linkini koyabilirsin
+            }
+        }
+
+        // ACİL DURUM: P TUŞUNA BASINCA EBA'YA ATAR
         document.addEventListener('keydown', function(e) {
             if (e.key.toLowerCase() === 'p') {
                 window.location.href = 'https://www.eba.gov.tr';
