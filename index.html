@@ -3,110 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EKİP PROJECTS | Official</title>
+    <title>8. Sınıf LGS Notları | MEB Güncel Müfredat</title>
     <style>
-        :root {
-            --neon: #00ff00;
-            --bg: #0a0a0a;
-            --card: #1a1a1a;
-        }
-        body {
-            background-color: var(--bg);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* KAMUFLAJ STİLLERİ */
+        #kamuflaj-ekrani {
+            background-color: #f0f2f5;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 20px;
+            display: block; /* İlk başta bu görünecek */
             min-height: 100vh;
         }
-        .header {
-            text-align: center;
-            padding: 60px 20px;
-        }
-        h1 {
-            color: var(--neon);
-            font-size: 3rem;
-            text-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
-            margin: 0;
-            letter-spacing: 5px;
-        }
-        p { color: #888; margin-top: 10px; }
+        .ders-header { background: #1a73e8; color: white; padding: 20px; text-align: center; border-radius: 10px; margin-bottom: 20px; }
+        .ders-kart { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 6px solid #1a73e8; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .ders-kart h2 { color: #1a73e8; font-size: 1.1rem; margin-top: 0; }
+        .ders-footer { margin-top: 50px; text-align: center; font-size: 0.7rem; color: #bbb; border-top: 1px solid #ddd; padding-top: 15px; }
+        #sinsi-link { color: #ddd; cursor: pointer; text-decoration: none; }
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            width: 90%;
-            max-width: 1000px;
-            padding-bottom: 50px;
-        }
-        .card {
-            background: var(--card);
-            border: 1px solid #333;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            text-decoration: none;
+        /* SENİN ASIL PANEL STİLLERİN (DOKUNULMADI) */
+        #asıl-panel {
+            display: none; /* İlk başta gizli */
+            background-color: #0a0a0a;
             color: white;
-            transition: 0.4s;
-            cursor: pointer;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
         }
-        .card:hover {
-            border-color: var(--neon);
-            transform: translateY(-10px);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
-        }
+        :root { --neon: #00ff00; --card: #1a1a1a; }
+        .header { text-align: center; padding: 60px 20px; }
+        .header h1 { color: var(--neon); font-size: 3rem; text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); margin: 0; letter-spacing: 5px; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 90%; max-width: 1000px; padding-bottom: 50px; }
+        .card { background: var(--card); border: 1px solid #333; border-radius: 20px; padding: 30px; text-align: center; text-decoration: none; color: white; transition: 0.4s; cursor: pointer; }
+        .card:hover { border-color: var(--neon); transform: translateY(-10px); box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); }
         .card h3 { color: var(--neon); font-size: 1.5rem; margin-bottom: 10px; }
-        
-        /* PANİK BUTONU */
-        .panic-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #d32f2f;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+        .panic-btn { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 1000; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>EKİP PROJECTS</h1>
-        <p>Bilişim Teknolojileri ve Yazılım Paneli</p>
-    </div>
-
-    <div class="container">
-        <a href="/projects.html" class="card">
-            <h3>🎮 Oyun Arşivi</h3>
-            <p>Okulda Engellenmeyen Güncel Oyun Listesi</p>
-        </a>
-
-        <a href="#" class="card">
-            <h3>🎵 Proje Müzikleri</h3>
-            <p>Arka Plan Drill & Lo-fi Mixler</p>
-        </a>
-
-        <div class="card" onclick="gizliGiris()">
-            <h3>🔒 VIP Ekip Paneli</h3>
-            <p>Sadece Yetkili Ekip Girebilir (Şifreli)</p>
+    <div id="kamuflaj-ekrani">
+        <div class="ders-header">
+            <h1>8. Sınıf Başarı Portalı</h1>
+            <p>LGS 2026 Hazırlık ve Ders Özetleri</p>
+        </div>
+        <div class="ders-kart">
+            <h2>Matematik: Kareköklü İfadeler</h2>
+            <p>Tam kare sayılar, karekökü tam sayı olan sayılardır. Örn: √16 = 4, √25 = 5...</p>
+        </div>
+        <div class="ders-kart">
+            <h2>Fen Bilimleri: Kalıtım</h2>
+            <p>Genotip ve fenotip kavramları: Genetik yapı ve dış görünüş. Baskın gen (A), çekinik gen (a).</p>
+        </div>
+        <div class="ders-footer">
+            <p>MEB Dijital Eğitim Müfredatı Sorgulama Servisi</p>
+            <span id="sinsi-link" onclick="paneliAc()">Veritabanı Erişim v2.4.1</span>
         </div>
     </div>
 
-    <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
+    <div id="asıl-panel">
+        <div class="header">
+            <h1>EKİP PROJECTS</h1>
+            <p style="color: #888; margin-top: 10px;">Bilişim Teknolojileri ve Yazılım Paneli</p>
+        </div>
+
+        <div class="container">
+            <a href="/projects.html" class="card">
+                <h3>🎮 Oyun Arşivi</h3>
+                <p style="color: #888;">Okulda Engellenmeyen Güncel Oyun Listesi</p>
+            </a>
+
+            <a href="#" class="card">
+                <h3>🎵 Proje Müzikleri</h3>
+                <p style="color: #888;">Arka Plan Drill & Lo-fi Mixler</p>
+            </a>
+
+            <div class="card" onclick="gizliGiris()">
+                <h3>🔒 VIP Ekip Paneli</h3>
+                <p style="color: #888;">Sadece Yetkili Ekip Girebilir (Şifreli)</p>
+            </div>
+        </div>
+        <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
+    </div>
 
     <script>
-        // ŞİFRE MEKANİZMASI
+        // PANELİ AÇAN FONKSİYON
+        function paneliAc() {
+            document.getElementById('kamuflaj-ekrani').style.display = 'none';
+            document.getElementById('asıl-panel').style.display = 'flex';
+        }
+
+        // SENİN ŞİFRE MEKANİZMAN (DOKUNULMADI)
         function gizliGiris() {
             var sifre = prompt("Güvenlik Kodu Girin:");
-            // Şifreyi küçük harfe çevirip kontrol eder
             if (sifre && sifre.toLowerCase() === "ayakkabı") {
                 alert("Erişim Onaylandı! Hoş geldin kral.");
                 window.location.href = "/ekip.html";
