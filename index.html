@@ -3,55 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8. Sınıf LGS Notları | MEB Güncel Müfredat</title>
+    <title>EKİP PROJECTS | Official</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f9; color: #333; margin: 0; padding: 20px; line-height: 1.6; }
-        header { background: #1565c0; color: white; padding: 20px; text-align: center; border-radius: 10px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .container { max-width: 600px; margin: auto; }
-        .card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 6px solid #1565c0; }
-        h1 { margin: 0; font-size: 1.6rem; letter-spacing: 1px; }
-        h2 { color: #1565c0; font-size: 1.2rem; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        p { font-size: 0.95rem; color: #555; }
-        .footer { margin-top: 80px; text-align: center; font-size: 0.7rem; color: #bbb; border-top: 1px solid #eee; padding-top: 15px; }
+        :root {
+            --neon: #00ff00;
+            --bg: #0a0a0a;
+            --card: #1a1a1a;
+        }
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        h1 {
+            color: var(--neon);
+            font-size: 3rem;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+            margin: 0;
+            letter-spacing: 5px;
+        }
+        p { color: #888; margin-top: 10px; }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 90%;
+            max-width: 1000px;
+            padding-bottom: 50px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        .card:hover {
+            border-color: var(--neon);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        .card h3 { color: var(--neon); font-size: 1.5rem; margin-bottom: 10px; }
         
-        /* Sinsi Giriş - Sadece Bizimkiler Bilir */
-        #secret-link { color: #ddd; text-decoration: none; cursor: pointer; transition: 0.3s; }
-        #secret-link:hover { color: #999; }
+        /* PANİK BUTONU */
+        .panic-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>8. Sınıf Akademik Destek</h1>
-        <p>LGS 2026 Müfredat Takip Sistemi</p>
-    </header>
-
-    <div class="card">
-        <h2>Fen Bilimleri: Mevsimler ve İklim</h2>
-        <p>Dünya'nın güneş etrafındaki dolanımı ve eksen eğikliği mevsimlerin oluşmasına neden olur. 21 Aralık Kış gündönümüdür.</p>
+    <div class="header">
+        <h1>EKİP PROJECTS</h1>
+        <p>Bilişim Teknolojileri ve Yazılım Paneli</p>
     </div>
 
-    <div class="card">
-        <h2>Matematik: Çarpanlar ve Katlar</h2>
-        <p>EBOB ve EKOK problemleri çözülürken sayıların asal çarpanlarına ayrılması büyük kolaylık sağlar. Aralarında asal sayılara dikkat!</p>
+    <div class="container">
+        <a href="/projects.html" class="card">
+            <h3>🎮 Oyun Arşivi</h3>
+            <p>Okulda Engellenmeyen Güncel Oyun Listesi</p>
+        </a>
+
+        <a href="#" class="card">
+            <h3>🎵 Proje Müzikleri</h3>
+            <p>Arka Plan Drill & Lo-fi Mixler</p>
+        </a>
+
+        <div class="card" onclick="gizliGiris()">
+            <h3>🔒 VIP Ekip Paneli</h3>
+            <p>Sadece Yetkili Ekip Girebilir (Şifreli)</p>
+        </div>
     </div>
 
-    <div class="card">
-        <h2>T.C. İnkılap Tarihi</h2>
-        <p>Selanik'in çok kültürlü yapısı, Mustafa Kemal'in fikir hayatının zenginleşmesinde etkili olmuştur.</p>
-    </div>
+    <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
 
-    <div class="card">
-        <h2>Türkçe: Sözcükte Anlam</h2>
-        <p>Gerçek anlam, yan anlam ve terim anlam arasındaki farklar LGS sorularının temelini oluşturur.</p>
-    </div>
+    <script>
+        // ŞİFRE MEKANİZMASI
+        function gizliGiris() {
+            var sifre = prompt("Güvenlik Kodu Girin:");
+            // Şifreyi küçük harfe çevirip kontrol eder
+            if (sifre && sifre.toLowerCase() === "ayakkabı") {
+                alert("Erişim Onaylandı! Hoş geldin kral.");
+                window.location.href = "/ekip.html";
+            } else if (sifre) {
+                alert("Hatalı Kod! Sistemden uzaklaşın.");
+            }
+        }
 
-    <div class="footer">
-        <p>Sistem v4.2.0 | © 2026 MEB Dijital Veri Koruma</p>
-        <a href="projeler.html" id="secret-link">Müfredatı Sorgula</a>
-    </div>
-</div>
-
+        // KLAVYE KISAYOLU (P TUŞU)
+        document.addEventListener('keydown', function(e) {
+            if (e.key.toLowerCase() === 'p') {
+                window.location.href = 'https://www.eba.gov.tr';
+            }
+        });
+    </script>
 </body>
 </html>
