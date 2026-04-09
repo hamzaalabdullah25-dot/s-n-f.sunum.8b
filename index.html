@@ -5,61 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8. Sınıf LGS Notları | MEB Güncel Müfredat</title>
     <style>
-        /* KAMUFLAJ STİLLERİ */
-        #kamuflaj-ekrani {
-            background-color: #f0f2f5;
-            color: #333;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+        /* TÜM BEYAZLIKLARI VE BOŞLUKLARI YOK EDEN AYARLAR */
+        html, body {
+            background-color: #0a0a0a; /* Arka plan her zaman senin siyahın */
             margin: 0;
-            padding: 20px;
-            display: block; /* İlk başta bu görünecek */
+            padding: 0;
             min-height: 100vh;
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
         }
-        .ders-header { background: #1a73e8; color: white; padding: 20px; text-align: center; border-radius: 10px; margin-bottom: 20px; }
-        .ders-kart { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 6px solid #1a73e8; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .ders-kart h2 { color: #1a73e8; font-size: 1.1rem; margin-top: 0; }
-        .ders-footer { margin-top: 50px; text-align: center; font-size: 0.7rem; color: #bbb; border-top: 1px solid #ddd; padding-top: 15px; }
-        #sinsi-link { color: #ddd; cursor: pointer; text-decoration: none; }
 
-        /* SENİN ASIL PANEL STİLLERİN (DOKUNULMADI) */
+        /* 1. KATMAN: KAMUFLAJ (LGS NOTLARI) */
+        #kamuflaj-ekrani {
+            background-color: #f0f2f5; /* Notlar kısmının arka planı */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+        .ders-header { background: #1a73e8; color: white; padding: 20px; text-align: center; border-radius: 12px; margin-bottom: 20px; width: 90%; max-width: 500px; }
+        .ders-kart { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; border-left: 6px solid #1a73e8; box-shadow: 0 4px 6px rgba(0,0,0,0.05); width: 90%; max-width: 500px; box-sizing: border-box; }
+        .ders-kart h2 { color: #1a73e8; font-size: 1.2rem; margin-top: 0; }
+        .ders-kart p { color: #555; line-height: 1.5; margin-bottom: 0; }
+        .ders-footer { margin-top: auto; padding: 30px 0; text-align: center; width: 100%; }
+        #sinsi-link { color: #ddd; cursor: pointer; text-decoration: none; font-size: 11px; transition: 0.3s; }
+        #sinsi-link:hover { color: #aaa; }
+
+        /* 2. KATMAN: SENİN ASIL EKİP PROJELERİ PANELİN */
         #asıl-panel {
             display: none; /* İlk başta gizli */
             background-color: #0a0a0a;
             color: white;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            min-height: 100vh;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
         }
-        :root { --neon: #00ff00; --card: #1a1a1a; }
-        .header { text-align: center; padding: 60px 20px; }
-        .header h1 { color: var(--neon); font-size: 3rem; text-shadow: 0 0 15px rgba(0, 255, 0, 0.4); margin: 0; letter-spacing: 5px; }
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 90%; max-width: 1000px; padding-bottom: 50px; }
-        .card { background: var(--card); border: 1px solid #333; border-radius: 20px; padding: 30px; text-align: center; text-decoration: none; color: white; transition: 0.4s; cursor: pointer; }
-        .card:hover { border-color: var(--neon); transform: translateY(-10px); box-shadow: 0 0 20px rgba(0, 255, 0, 0.1); }
+        :root {
+            --neon: #00ff00;
+            --bg: #0a0a0a;
+            --card: #1a1a1a;
+        }
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .header h1 {
+            color: var(--neon);
+            font-size: 3rem;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+            margin: 0;
+            letter-spacing: 5px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 90%;
+            max-width: 1000px;
+            padding-bottom: 50px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+        .card:hover {
+            border-color: var(--neon);
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
         .card h3 { color: var(--neon); font-size: 1.5rem; margin-bottom: 10px; }
-        .panic-btn { position: fixed; bottom: 20px; right: 20px; background: #d32f2f; color: white; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 1000; }
+        .panic-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
 
     <div id="kamuflaj-ekrani">
         <div class="ders-header">
-            <h1>8. Sınıf Başarı Portalı</h1>
-            <p>LGS 2026 Hazırlık ve Ders Özetleri</p>
+            <h1>LGS 2026 Başarı Paneli</h1>
+            <p>Güncel Müfredat ve Ders Özetleri</p>
         </div>
+
         <div class="ders-kart">
-            <h2>Matematik: Kareköklü İfadeler</h2>
-            <p>Tam kare sayılar, karekökü tam sayı olan sayılardır. Örn: √16 = 4, √25 = 5...</p>
+            <h2>Matematik: Çarpanlar ve Katlar</h2>
+            <p>Her pozitif tam sayı, iki pozitif tam sayının çarpımı şeklinde yazılabilir. En büyük ortak bölen (EBOB) hesaplanırken ortak asal çarpanlar alınır.</p>
         </div>
+
         <div class="ders-kart">
-            <h2>Fen Bilimleri: Kalıtım</h2>
-            <p>Genotip ve fenotip kavramları: Genetik yapı ve dış görünüş. Baskın gen (A), çekinik gen (a).</p>
+            <h2>Fen Bilimleri: Mevsimlerin Oluşumu</h2>
+            <p>Dünya'nın eksen eğikliği (23° 27') mevsimlerin oluşmasının temel sebebidir. 21 Haziran'da Kuzey Yarım Küre'de en uzun gündüz yaşanır.</p>
         </div>
+
+        <div class="ders-kart">
+            <h2>İnkılap Tarihi: Bir Kahraman Doğuyor</h2>
+            <p>Mustafa Kemal'in doğduğu Selanik şehrinin kültürel zenginliği, onun farklı fikirlere açık bir lider olmasını sağlamıştır.</p>
+        </div>
+
         <div class="ders-footer">
-            <p>MEB Dijital Eğitim Müfredatı Sorgulama Servisi</p>
-            <span id="sinsi-link" onclick="paneliAc()">Veritabanı Erişim v2.4.1</span>
+            <p style="color:#999; margin-bottom:5px;">MEB Eğitim Materyalleri Veritabanı</p>
+            <span id="sinsi-link" onclick="paneliAc()">Müfredat Veritabanı Sorgula v2.4.1</span>
         </div>
     </div>
 
@@ -85,17 +155,19 @@
                 <p style="color: #888;">Sadece Yetkili Ekip Girebilir (Şifreli)</p>
             </div>
         </div>
+
         <button class="panic-btn" onclick="window.location.href='https://www.eba.gov.tr'">Hızlı EBA</button>
     </div>
 
     <script>
-        // PANELİ AÇAN FONKSİYON
+        // KAMUFLAJI KAPATIP ASIL PANELİ AÇAN FONKSİYON
         function paneliAc() {
             document.getElementById('kamuflaj-ekrani').style.display = 'none';
             document.getElementById('asıl-panel').style.display = 'flex';
+            window.scrollTo(0, 0); // Sayfayı en üste çek
         }
 
-        // SENİN ŞİFRE MEKANİZMAN (DOKUNULMADI)
+        // SENİN ŞİFRE MEKANİZMAN
         function gizliGiris() {
             var sifre = prompt("Güvenlik Kodu Girin:");
             if (sifre && sifre.toLowerCase() === "ayakkabı") {
